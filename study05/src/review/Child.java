@@ -1,4 +1,4 @@
-package step01_basic;
+package review;
 
 class Parent extends Object{//class 선언구에 extends 가 없을 경우 무조건 자동 추가
 	String name;
@@ -30,8 +30,3 @@ public class Child extends Parent {//Parent를 상속받는 Child 클래스
 	}
 
 }
-
-
-
-
-

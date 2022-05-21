@@ -1,4 +1,4 @@
-package step01_basic;
+package review;
 
 public class Child6 {
 
@@ -9,7 +9,7 @@ public class Child6 {
 	}
 	
 	static void printDatas(Object[] v) {
-		System.out.println(v[0] + " " + ((String)v[0]).charAt(2));
+		System.out.println(v[0] + " " + ((String)v[0]).charAt(2)); //v[0]의 index 2 위치상의 철자 하나 출력
 		
 	}
 	static Object[] changeDatas(Object[] v) {

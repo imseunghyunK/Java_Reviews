@@ -1,4 +1,4 @@
-package step01_basic;
+package review;
 
 class Parent4 extends Object {
 	int a = 100;
@@ -21,17 +21,17 @@ public class Child4 extends Parent4 {
 		System.out.println("자식");
 	}
 	
+
+	
 	String printData() {
 		return super.printData() + " b 데이터 " + b;
 	}
 	
 	public static void main(String[] args) {
-
 		//upcasting = 자동 형변환
 		Child4 c = new Child4(); //다형성 자바 문법
 		System.out.println(c.printData());
 		c.a = 20;
-		
 //		c.b = 60.5f; 불가
 		
 		//이미 생성된 객체를 참조하는 변수 타입의 변수만 새로 선언해서 c가 참조하는 객체를 d가 함께 참조
