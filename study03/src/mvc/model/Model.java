@@ -1,3 +1,10 @@
+/*database와 실제 연동되는 class 가정
+ * - sql -> java + sql API(JDBC)로 개발 예정
+ * - 데이터를 이름값 Customer 자체를 변환 및 출력 구조로 변환
+ * 
+ * 로직은 동일 단 개선하는 작업 : 리팩토링
+ */
+
 package mvc.model;
 
 import mvc.model.db.Data;

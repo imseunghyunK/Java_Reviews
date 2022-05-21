@@ -1,3 +1,9 @@
+/* 최종 출력만 담당하는 로직의 클래스
+ * 1. 이름 출력
+ * 2.고객 정보 출력 
+ */
+
+
 package mvc.view;
 
 import mvc.model.domain.Customer;

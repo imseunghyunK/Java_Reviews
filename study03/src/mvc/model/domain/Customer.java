@@ -12,7 +12,6 @@ import lombok.Setter;
 public class Customer {
 	String id;
 	String pw;
-	Car car;
-
+	Car car; //생성된 Car 객체의 주소값 보유하게되는 멤버(타입관점 : 참조)
 
 }
