@@ -40,7 +40,7 @@ public class Child2 extends Parent2{
 		super.printAll()   ;//Parent2의 printAll() 코드와 100% 동일한 단일 문장
 		System.out.println(job);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Child2 [job=" + job + ", name=" + name + ", age=" + age + "]";

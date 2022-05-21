@@ -3,7 +3,7 @@ package review;
 class Parent extends Object{//class 선언구에 extends 가 없을 경우 무조건 자동 추가
 	String name;
 	int age;
-
+	
 	Parent(){}
 	Parent(String n, int a){
 		this.name = n;
