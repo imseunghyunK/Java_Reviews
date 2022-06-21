@@ -36,19 +36,17 @@ public class StreamAPI5FlatMap {
 		
 		System.out.println(playersInWorldCup2022);
 
-		/* 각 index별로 저장된 list들을 하나의 list에 새로 저장
-		 * 필요성 : 로직 연출시 모든 선수들을 관리하는 List로 재 생성을 해야하는 상황인 경우의 코드
-		 */
+		//각 index별로 저장된 list들을 하나의 list에 새로 저장
 		// step01 - 정통 방식
-//		List<String> listOfAllPlayers = new ArrayList<>();
-//		for (List<String> team : playersInWorldCup2022) {
-//			for (String name : team) {
-//				listOfAllPlayers.add(name);
-//			}
-//		}
-//
-//		System.out.println("world cup 선수들");
-//		System.out.println(listOfAllPlayers);
+		List<String> listOfAllPlayers = new ArrayList<>();
+		for (List<String> team : playersInWorldCup2022) {
+			for (String name : team) {
+				listOfAllPlayers.add(name);
+			}
+		}
+
+		System.out.println("world cup 선수들");
+		System.out.println(listOfAllPlayers);
 
 		// step02 - jdk1.8부터 추구하는 코드
 		//문자열 list의 스트림을 문자열 Stream으로 평면화
