@@ -1,10 +1,3 @@
-/* 학습내용
- * 
- * 1. Stream API
- * 2.
- * 
- */
-
 package step01;
 
 import java.util.Arrays;
