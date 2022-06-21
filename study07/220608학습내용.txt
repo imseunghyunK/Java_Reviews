@@ -1,0 +1,126 @@
+학습내용
+
+1. JDBC
+	- Java DataBase Connectivity
+	- DB연동 표준 API
+	
+2. 접속 DB별 통신 driver 필요
+	-  ex) 삼성 PC와 LG 프린트기 연동시 필요 선행 작업
+		- 삼성 PC에 LG에서 개발한 해당 프린트기 버전에 맞는 driver를 받아서 PC에 설치
+		- 프린트 드라이버 설치로 PC와 프린트기 연동
+			: java개발자는 db의 접속 driver만 설치 해놓으면 db연동 개발
+			
+
+3. 사용 DB
+	- mysql db 시스템 있음
+	- java 개발 환경 설치되어 있음
+	
+
+4. 생각해보기
+	1. db연동 tool(dbeaver 등)
+		사용을 전제조건
+		1. mysql 설치 필수
+		2. mysql 실행
+		3. dbeaver 실행
+		4. dbeaver에 mysql만의 id.pw로 접속시도
+			- 유효한 경우 : 접속 성공
+				5. sql 문장 싫애
+					select - 2차원 구조의 table 형식
+					insert - 몇개행 입력에 대한 숫자값
+					update - "		수정에 대한 숫자값
+					delete - "		삭제에 대한 숫자값
+			- 무효한 경우 : 접속 실패
+			
+	2. end user는 브라우저로 사용 웹 기반의 서비스라 가정
+		사용을 전제조건
+		1. mysql 설치 필수
+		2. mysql 실행
+		3. client가 가입 요청
+		4. 해당 로직의 java코드가 db접속 시도
+			- 접속 성공(id/pw/URI(ip포함))
+				5. sql문장 실행
+					- java code
+						insert - 몇개행 입력에 대한 숫자값 java 코드로 받음
+			- 접속 실패
+			
+5. 코드 관점에서 생각해보기
+	- 발생 가능한 경우의 수
+
+ 	1. db driver 설치(로딩)
+ 		- 존재한다
+ 		- 미존재한다
+ 		
+ 		class.forName();
+ 		
+ 	2. db 접속(id.pw.url)
+ 		- 접속 성공
+ 		- 접속 실패
+ 		
+ 		Connection getConnection(String url, String id, String pw)
+ 		
+ 	3. sql 문장 실행
+ 		- 정상 실행
+ 			- 검색시 결과가 있음
+ 			- 검색시 결과가 없음
+ 		- 비정상 실행
+ 		
+ 		- 사전 정해진 sql문장 없이 sql문장 실행 객체 생성
+ 		Statement createStatement(){}
+ 			ResultSet executeQuery(String select){}
+ 			int executeUpdate(String dml){}
+ 		
+ 		- 사전에 고정된 sql문장으로 sql 실행 객체 생성
+ 		PreparedStatement prepareStatement(String sql){}
+ 			ResultSet executeQuery(){}
+ 			int executeUpdate(){}
+ 		
+ 	4. sql 문장 실행 결과 활용
+ 		- select : 2차원 table 구조(resultset)
+ 		- insert/update/delete : 영향을 받은 행수 정수
+ 		
+ 		ResultSet executeQuery(String select){}
+ 		int executeUpdate(String dml){}
+ 	
+ 	5. 더 이상 사용하지 않는 db 자원들 반환
+		- close()
+
+		
+6. db연동 작업 단계
+	1단계 - driver 로딩(설치)
+	2단계 - Connection 객체 생성
+	3단계 - Statement 객체 생성
+	4단계 - sql 문장 실행 및 활용
+		select - ResultSet
+		dml - 행 개수
+	5단계 - 자원 반환
+	
+	질문 crud 개별 작업시에 공통된 개발 단계는 몇 단계까지?
+		1단계 ~ 3단계, 5단계 공통
+		
+	sql문장에 따라 구분 필요 : 4단계
+	
+7. 문제
+	1. mysql에 다수 sql 실행시 왜 원할하지 않는지? 헤결책?
+		- 단 재부팅으로 해결/ mysql db 재실행 답안 제외
+		- process를 명령어로 제어
+		- show processlist; -> kill id;
+		
+		
+	2. @Test 순서에 대한 보장은 안된다 라고 고려하는 관점 @Test 애노테이션 실행 순서 제어는 어떻게?
+		
+		Order() - 괄호 안에 숫자를 넣어 순서를 제어한다.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
