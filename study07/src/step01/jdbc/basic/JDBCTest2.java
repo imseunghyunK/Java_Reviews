@@ -11,7 +11,7 @@ import util.DBUtil;
 
 public class JDBCTest2 {
 	
-//	@Test
+	@Test
 	//deptno값으로 부서 하나의 정보 검색
 	public void selectOne() {
 		System.out.println("---------selectOne()-----------");
@@ -39,7 +39,7 @@ public class JDBCTest2 {
 	}
 	
 	// table 복제해서 생성시에는 dept의 제약조건까지 복제되지 않음
-//	@Test
+	@Test
 	//insert - insert into dept01 values (50, '교육부', '서초');
 	public void insert() {
 		System.out.println("---------insert()-----------");
@@ -65,7 +65,7 @@ public class JDBCTest2 {
 	
 	
 	//update
-//	@Test
+	@Test
 
 	public void update() {
 		System.out.println("---------update()-----------");
@@ -89,10 +89,10 @@ public class JDBCTest2 {
 		}
 	}
 	
-	//? delete 메소드 직접 구현하기
+	// delete 
 	// delete from dept01 where deptno=50
 	
-//	@Test
+	@Test
 	//delete
 	public void delete() {
 		System.out.println("---------delete()-----------");
@@ -116,7 +116,7 @@ public class JDBCTest2 {
 		}
 	}
 	
-//	@Test
+	@Test
 	// 모든 검색
 	public void selectAll() {
 		Connection conn = null;
