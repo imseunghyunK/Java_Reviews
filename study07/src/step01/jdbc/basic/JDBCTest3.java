@@ -41,11 +41,6 @@ public class JDBCTest3 {
 	}
 
 	// PreparedStatement API 활용하기
-	/*
-	 * - sql 문장으로 생성시키는 문장 실행 객체 - 그 이외의 다른 sql문장 실행 불가 - 가변적인 데이터 표현은 메소드와 ? 표기로
-	 * 매핑해서 설정 - 동일한 sql문장을 다수가 실행하게 되는 로직인 경우 db 자체적으로 컴파일은 한번만 이미 존재하는 실행 코드로 실행하기
-	 * 때문에 실행 속도가 빠름 - 참고 : Statement는 client가 요청시 실행시 마다 무조건 컴파일 -> 실행
-	 */
 	public void insert2(int newDeptno, String newDname, String newLoc) {
 		System.out.println("------------- insert2() ------------");
 
@@ -76,7 +71,7 @@ public class JDBCTest3 {
 		}
 	}
 
-	// ? 동적 요청 처리 하는 update, PreparedStatement로 변환
+	// 동적 요청 처리 하는 update, PreparedStatement로 변환
 	public void update(int upDeptno, String newLoc) {
 		System.out.println("------------- update() ------------");
 		Connection conn = null;
@@ -103,18 +98,9 @@ public class JDBCTest3 {
 		}
 	}
 
-	/*
-	 * 모든 부서 정보 검색 단, 메소드의 반환값으로 검색된 모든 부서 정보 반환 - 타입? - 부서별 데이터를 명확하게 구분하기 위해서는 어떻게
-	 * 반환???
-	 * 현 시점의 직원수는 14명, 5분 후 퇴사 13, 내일 5명 유입 ..???
-	 * 
-	 * 모든 직원의 데이터를 반환하는 메소드의 타입은 가장 이상적인 타입이 어떤 타입이 좋을까요?
-	 * select empno, ename, sal*12+ifnull(comm, 0) as sal from emp01
-	 * 
-	 * 배열 : 배열 생성 후에 배열 내에 해당 index에 Emp01DTO 객체들 저장
-	 * 	- 배열 생성시 크기정보 필요
-	 * 리스트 : 리스트 생성후에 해당 index에 Emp01DTO 객체들 저장
-	 */
+
+	// 모든 부서 정보 검색 단, 메소드의 반환값으로 검색된 모든 부서 정보 반환
+
 	public ArrayList<Emp01DTO> selectAll(){
 		System.out.println("------------- selectAll() ------------");
 		Connection conn = null;
@@ -146,11 +132,8 @@ public class JDBCTest3 {
 	
 	
 	
-	/*
-	 * 하나의 부서 정보는 어떻게 반환? - DTO - 모든 컬럼값과 일치되는 변수들로 구성된 객체를 반환 - 메소드 실행 결과값은 데이터가
-	 * 존재할 경우엔 Dept01DTO 객체 반환 데이터가 미 존재할 경우 ? null
-	 * 
-	 */
+
+	// 하나의 부서 정보 반환
 	// select * from dept where deptno=?; deptno는 pk
 	public Dept01DTO selectOne(int deptno) {
 		System.out.println("------------- selectOne() ------------");
@@ -181,17 +164,8 @@ public class JDBCTest3 {
 		return null;
 	}
 
-	/*? create table emp01 as select empno, ename, sal, comm from emp;
-	 * 검색 메소드
-	 * 1. 기능 : 해당 사원의 모든 정보 검색해서 반환
-	 * 2. 단, 연봉(월급여 12개월분, comm도 포함)
-	 * 3. Emp01DTO 로 반환 및 출력 
-	 * 4. 사번으로 해당 사원의 정보 검색후 DTO로 반환
-	 * 5. 단, DTO 클래스는 꼭 컬럼과 100% 일치하지 않아도 됩니다. 
-	 * 	- 즉 필요에 의해서 DTO 클래스 들은 다수 개발 가능
-	 * 
-	 * select empno, ename, sal*12+ifnull(comm, 0) as sal from emp01;
-	 */
+	// create table emp01 as select empno, ename, sal, comm from emp;
+	// select empno, ename, sal*12+ifnull(comm, 0) as sal from emp01;
 	public Emp01DTO getEmp(int empno) {
 		
 		System.out.println("------------- getEmp() ------------");
@@ -234,23 +208,23 @@ public class JDBCTest3 {
 		}
 			
 		
-//		Emp01DTO emp = getEmp(7369);
-//		if (emp != null) {
-//			System.out.println(emp); // emp.toString() 호출 코드와 동일
-//		} else {
-//			System.out.println("요청하신 사번에 맞는 사원의 정보는 없습니다");
-//		}
+		Emp01DTO emp = getEmp(7369);
+		if (emp != null) {
+			System.out.println(emp); // emp.toString() 호출 코드와 동일
+		} else {
+			System.out.println("요청하신 사번에 맞는 사원의 정보는 없습니다");
+		}
 		
-//		insert2(60, "교육부", "서초");
-//		update(50, "강남");
+		insert2(60, "교육부", "서초");
+		update(50, "강남");
 
-//		Dept01DTO v1 = selectOne(10);
-//
-//		if (v1 != null) {
-//			System.out.println(v1); // v1.toString() 호출 코드와 동일
-//		} else {
-//			System.out.println("요청하신 부서 정보는 없습니다");
-//		}
+		Dept01DTO v1 = selectOne(10);
+
+		if (v1 != null) {
+			System.out.println(v1); // v1.toString() 호출 코드와 동일
+		} else {
+			System.out.println("요청하신 부서 정보는 없습니다");
+		}
 	}
 
 }
