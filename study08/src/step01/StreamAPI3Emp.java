@@ -18,7 +18,7 @@ public class StreamAPI3Emp {
 		peoples.add(new Employee(107, "Samy", 224));
 		peoples.add(new Employee(108, "Duke", 29));
 		
-		//? 나이값들 평균 단 출력되는 데이터는 double
+		// 나이값들 평균 단 출력되는 데이터는 double
 		// mapToInt (parameter로 유입된 데이터를 int로 변환)
 		double ageAvg = peoples.stream().mapToInt(e -> e.getAge()).average().getAsDouble();
 	
