@@ -1,8 +1,3 @@
-/* 1. 소스만 보고 API 기능들 이해하기
- * 2. 혹여 필요에 의해서 이해를 위한 sample 도우미 예제를 구성해 보기
- * 3. review + 6단계 예제 미션 수행 
- *  1시간 - 4시 정각에 메인세션에서 봅시다
- */
 package step01;
 import java.util.ArrayList;
 import java.util.Arrays;
