@@ -1,18 +1,3 @@
-/* 개발 단계
- * 1. db driver 설치(로딩)
- *  - com.mysql.cj.jdbc.Driver
- * 2. db 접속
- * 		- url(ip, db명, database이름..) / id : root / pw : 
- *		- url
- * 			"jdbc:mysql://localhost/playdata?characterEncoding=UTF-8&serverTimezone=UTC"
-  
- * 3. sql 문장 실행
- *  - emp00 새로 생성해서 사용
- * 4. sql 문장 실행 결과 활용
- * 5. 더 이상 사용하지 않는 db 자원들 반환
- */
-
-
 package step01.jdbc.basic;
 
 import java.sql.Connection;
@@ -40,13 +25,13 @@ public class JDBCTest1 {
 		 *  jdbc:벤더사별 다름
 		 * 
 		 */
-		String url = "jdbc:mysql://localhost/playdata?characterEncoding=UTF-8&serverTimezone=UTC";
+		String url = "url";
 		
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rset = null;
 		try {
-			 conn = DriverManager.getConnection(url, "root", "playdata");
+			 conn = DriverManager.getConnection(url, "id", "pw");
 			//dept table만 검색 -  select * from dept;
 			
 			//3단계 - 문장 실행 객체 생성
@@ -95,8 +80,8 @@ public class JDBCTest1 {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			//접속 객체 생성 - 정상 실행인 경우 java로 mysql 접속 성공
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			Connection con = DriverManager.getConnection(url, "SCOTT", "TIGER");
+			String url = "url";
+			Connection con = DriverManager.getConnection(url, "id", "pw");
 			
 			//정상적인 접속 객체는 주소값 보유
 			System.out.println(con);	
@@ -115,8 +100,8 @@ public class JDBCTest1 {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			//접속 객체 생성 - 정상 실행인 경우 java로 mysql 접속 성공
-			String url = "jdbc:mysql://localhost/playdata?characterEncoding=UTF-8&serverTimezone=UTC";
-			Connection con = DriverManager.getConnection(url, "root", "playdata");
+			String url = "url";
+			Connection con = DriverManager.getConnection(url, "id", "pw");
 			
 			//정상적인 접속 객체는 주소값 보유
 			System.out.println(con);	
